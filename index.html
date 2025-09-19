@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather forecast</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <video class="video-background" autoplay muted loop playsinline>
+      <source src="background.mp4" type="video/mp4" />
+    </video>
+
+    <nav class="navbar">
+      <h1>Your daily forecast, one click away</h1>
+
+      <div class="search-container">
+        <input
+          list="options"
+          id="city-dropdown"
+          class="city-dropdown"
+          placeholder="city"
+          
+        />
+
+        <datalist id="options">
+          <option value="Agra"></option>
+          <option value="Ahmedabad"></option>
+          <option value="Amritsar"></option>
+          <option value="Bangalore"></option>
+          <option value="Bhopal"></option>
+          <option value="Bhubaneswar"></option>
+          <option value="Chennai"></option>
+          <option value="Faridabad"></option>
+          <option value="Gandhinagar"></option>
+          <option value="Guwahati"></option>
+          <option value="Hyderabad"></option>
+          <option value="Indore"></option>
+          <option value="Jaipur"></option>
+          <option value="Jodhpur"></option>
+          <option value="Kanpur"></option>
+          <option value="Kolkata"></option>
+          <option value="Lucknow"></option>
+          <option value="Ludhiana"></option>
+          <option value="Meerut"></option>
+          <option value="Mumbai"></option>
+          <option value="Nagpur"></option>
+          <option value="Nashik"></option>
+          <option value="New Delhi"></option>
+          <option value="Patna"></option>
+          <option value="Pune"></option>
+          <option value="Rajkot"></option>
+          <option value="Ranchi"></option>
+          <option value="Srinagar"></option>
+          <option value="Surat"></option>
+          <option value="Varanasi"></option>
+          <option value="Vadodara"></option>
+        </datalist>
+        
+        <button onclick="searchWeather()">Search</button>
+        
+      </div>
+      
+    </nav>
+    
+    <div class="parentcontainer">
+      <div class="container">
+        <div class="weather-box" id="box">
+          <h2 id="weather-city"></h2>
+          <p id="weather-temp"></p>
+          <p id="time"><span id="local_time"></span></p>
+         
+        </div>
+        <div id="moving-container" class="moving-container">
+          <div class="moving-box">Feels like: <span id="feels_like">12</span> 🌡️</div>
+          <div class="moving-box">Humidity: <span id="humidity">55%</span> 💧</div>
+          <div class="moving-box">Sunrise: <span id="sunrise">6:00 AM</span> 🌅</div>
+          <div class="moving-box">Sunset: <span id="sunset">7:00 PM</span> 🌇</div>
+          <div class="moving-box">Wind speed: <span id="wind_speed">10 km/h</span> 🌬️</div>
+          <div class="moving-box">UV index: <span id="uv_index">5</span> 🌞</div>
+          <div class="moving-box">Visibility: <span id="visibility">10 km</span> 👓</div>
+          <div class="moving-box">Min temp: <span id="min_temp">10°C</span> ❄️</div>
+          <div class="moving-box">Max temp: <span id="max_temp">24°C</span> 🔥</div>
+        </div>
+     </div>
+
+     
+            
+<div class="hourly-grid">
+  
+  <div class="hour-box" onclick="openHourlyPage(0)">
+    <p id="hour0-time" class="hour-time">--:--</p>
+    <p id="hour0-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(1)">
+    <p id="hour1-time" class="hour-time">--:--</p>
+    <p id="hour1-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(2)">
+    <p id="hour2-time" class="hour-time">--:--</p>
+    <p id="hour2-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(3)">
+    <p id="hour3-time" class="hour-time">--:--</p>
+    <p id="hour3-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(4)">
+    <p id="hour4-time" class="hour-time">--:--</p>
+    <p id="hour4-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(5)">
+    <p id="hour5-time" class="hour-time">--:--</p>
+    <p id="hour5-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(6)">
+    <p id="hour6-time" class="hour-time">--:--</p>
+    <p id="hour6-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(7)">
+    <p id="hour7-time" class="hour-time">--:--</p>
+    <p id="hour7-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(8)">
+    <p id="hour8-time" class="hour-time">--:--</p>
+    <p id="hour8-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(9)">
+    <p id="hour9-time" class="hour-time">--:--</p>
+    <p id="hour9-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(10)">
+    <p id="hour10-time" class="hour-time">--:--</p>
+    <p id="hour10-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(11)">
+    <p id="hour11-time" class="hour-time">--:--</p>
+    <p id="hour11-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(12)">
+    <p id="hour12-time" class="hour-time">--:--</p>
+    <p id="hour12-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(13)">
+    <p id="hour13-time" class="hour-time">--:--</p>
+    <p id="hour13-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(14)">
+    <p id="hour14-time" class="hour-time">--:--</p>
+    <p id="hour14-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(15)">
+    <p id="hour15-time" class="hour-time">--:--</p>
+    <p id="hour15-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(16)">
+    <p id="hour16-time" class="hour-time">--:--</p>
+    <p id="hour16-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(17)">
+    <p id="hour17-time" class="hour-time">--:--</p>
+    <p id="hour17-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(18)">
+    <p id="hour18-time" class="hour-time">--:--</p>
+    <p id="hour18-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(19)">
+    <p id="hour19-time" class="hour-time">--:--</p>
+    <p id="hour19-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(20)">
+    <p id="hour20-time" class="hour-time">--:--</p>
+    <p id="hour20-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(21)">
+    <p id="hour21-time" class="hour-time">--:--</p>
+    <p id="hour21-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(22)">
+    <p id="hour22-time" class="hour-time">--:--</p>
+    <p id="hour22-temp" class="hour-temp">--°C</p>
+  </div>
+  <div class="hour-box" onclick="openHourlyPage(23)">
+    <p id="hour23-time" class="hour-time">--:--</p>
+    <p id="hour23-temp" class="hour-temp">--°C</p>
+  </div>
+</div>
+
+
+
+
+    <div class="forecast-container">
+        <div class="forecast-grid">
+          <div class="forecast-card" onclick="openDailyPage(0)">
+            <h3 id="day-0-date">Date</h3>
+            <p>Max: <span id="day-0-max">--</span>°C</p>
+            <p>Min: <span id="day-0-min">--</span>°C</p>
+          </div>
+          <div class="forecast-card" onclick="openDailyPage(1)">
+            <h3 id="day-1-date">Date</h3>
+            <p>Max: <span id="day-1-max">--</span>°C</p>
+            <p>Min: <span id="day-1-min">--</span>°C</p>
+          </div>
+          <div class="forecast-card" onclick="openDailyPage(2)">
+            <h3 id="day-2-date">Date</h3>
+            <p>Max: <span id="day-2-max">--</span>°C</p>
+            <p>Min: <span id="day-2-min">--</span>°C</p>
+          </div>
+          <div class="forecast-card" onclick="openDailyPage(3)">
+            <h3 id="day-3-date">Date</h3>
+            <p>Max: <span id="day-3-max">--</span>°C</p>
+            <p>Min: <span id="day-3-min">--</span>°C</p>
+          </div>
+          <div class="forecast-card" onclick="openDailyPage(4)">
+            <h3 id="day-4-date">Date</h3>
+            <p>Max: <span id="day-4-max">--</span>°C</p>
+            <p>Min: <span id="day-4-min">--</span>°C</p>
+          </div>
+          <div class="forecast-card" onclick="openDailyPage(5)">
+            <h3 id="day-5-date">Date</h3>
+            <p>Max: <span id="day-5-max">--</span>°C</p>
+            <p>Min: <span id="day-5-min">--</span>°C</p>
+          </div>
+          <div class="forecast-card" onclick="openDailyPage(6)">
+            <h3 id="day-6-date">Date</h3>
+            <p>Max: <span id="day-6-max">--</span>°C</p>
+            <p>Min: <span id="day-6-min">--</span>°C</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      <div class="popularcities">
+        <h2>Popular Cities</h2>
+        <div class="extra-cities">
+          <div class="extra-city-box">
+            <h2>Delhi</h2>
+            <p><span id="delhitemp"></span></p>
+          </div>
+          <div class="extra-city-box">
+            <h2>Mumbai</h2>
+            <p><span id="mumbaitemp"></span></p>
+          </div>
+          <div class="extra-city-box"> 
+            <h2>Pune</h2>
+            <p><span id="punetemp"></span></p>
+          </div>
+        </div>
+        <div class="extra-cities">
+          <div class="extra-city-box">
+            <h2>Hyderabad</h2>
+            <p><span id="hyderabadtemp"></span></p>
+          </div>
+          <div class="extra-city-box">
+            <h2>Banglore</h2>
+            <p><span id="bangloretemp"></span></p>
+          </div>
+          <div class="extra-city-box">
+            <h2>Gandhinagar</h2>
+            <p><span id="gandhinagartemp"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-section">
+       <p id="news" class="news" onclick="window.location.href='index2.html'">
+        Stay ahead of the curve and dive into the latest updates<br>click here to explore the news that shapes our world! 📢📰
+
+          </p>
+    </div>
+    <div class="footer">
+      <p>Weather App &copy; 2023</p>
+      <p>Developed by BHAKTI PATEL & SHRUSTI DALWADI</p>
+      <p>😊Visit Again😊</p>
+    </div>
+    
+      
+    </body>
+
+    <script src="script.js"></script>
+  </body>
+</html>

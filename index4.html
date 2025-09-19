@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Day Forecast</title>
+  <link rel="stylesheet" href="style4.css" />
+</head>
+<body>
+
+    <video class="video-background" autoplay muted loop playsinline>
+        <source src="background.mp4" type="video/mp4" />
+      </video>
+
+
+  <div class="day-details">
+    <div id="day-title" style="font-size: 40px;"></div>
+    <div id="day-emoji" style="font-size: 60px;">☀️</div>
+    <div class="temp"> 
+    <span >Min temp: <span id="min_temp">10°C</span> ❄️</span>
+    <span>Max temp: <span id="max_temp">24°C</span> 🔥</span>
+   </div>
+  </div>  
+
+  <div class="extra-details">
+        <div class="moving-box">Feels like <span id="feels_like">12</span> 🌡️</div>
+        <div class="moving-box">Humidity <span id="humidity">55%</span> 💧</div>
+        <div class="moving-box">Sunrise <span id="sunrise">6:00 AM</span> 🌅</div>
+        <div class="moving-box">Sunset <span id="sunset">7:00 PM</span> 🌇</div>
+        <div class="moving-box">Wind speed <span id="wind_speed">10 km/h</span> 🌬️</div>
+        <div class="moving-box">UV index <span id="uv_index">5</span> 🌞</div>
+        <div class="moving-box">Visibility <span id="visibility">10 km</span> 👓</div>
+       
+      </div>
+   </div>
+</body>
+<script src="script4.js"></script>
+</html>

@@ -1,0 +1,354 @@
+body {
+    font-family: Arial, sans-serif;
+    background-size: contain;
+    text-align: center;
+    margin-right: 0;
+    width: 100vw;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    animation: none;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    color: white;
+    width: auto;
+}
+
+.parentcontainer {
+    width: 100vw;
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+}
+
+datalist,
+button {
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 50px;
+    border: none;
+    width: 150px;
+    height: 50px;
+}
+
+.city-dropdown {
+    width: 150px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    color: black;
+}
+
+select:hover,
+button:hover,
+.city-dropdown:hover {
+    background: #4b5da4;
+    color: white;
+    cursor: pointer;
+
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.453);
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.weather-box {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+
+
+.news {
+    margin: 20px auto;
+    background: linear-gradient(to left, #ffffff5d, #6d7dbd74, #5265b178, #ffffff67);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80vw;
+    height: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.news:hover {
+    background: #55639f74;
+    cursor: pointer;
+}
+
+.moving-container {
+    width: auto;
+    background: linear-gradient(to left, #ffffff5d, #6d7dbd74, #5265b178, #ffffff67);
+    height: 60px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.moving-container:hover {
+    background: #55639f74;
+    cursor: pointer;
+}
+
+.moving-box {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    white-space: nowrap;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.moving-box.active {
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+
+    transform: translateX(0);
+    transform: scale(1.1);
+}
+
+/* Expanded mode styles */
+.moving-container.expanded {
+    width: 90%;
+    height: auto;
+    max-height: 100vh;
+    cursor: default;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.moving-container.expanded .moving-box {
+    position: static;
+    opacity: 1 !important;
+    transform: none !important;
+    white-space: normal;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.moving-container.collapsing .moving-box {
+    transition: none !important;
+}
+
+.three-day-forecast {
+    text-align: center;
+    margin: 40px auto 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    height: 20%;
+    max-width: 800px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.three-day-forecast:hover {
+    background: #9198b974;
+    color: white;
+    cursor: pointer;
+}
+
+.forecast-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.forecast-day {
+    border-radius: 10px;
+    width: 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.popularcities {
+    margin-top: 30px;
+}
+
+.extra-cities {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.extra-city-box {
+    background: rgba(255, 255, 255, 0.307);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Main container for the forecast */
+.forecast-container {
+    max-width: 80vw;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+/* Title styling */
+.forecast-container .title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Grid layout for the 7 forecast cards */
+.forecast-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Individual forecast card */
+.forecast-card {
+    width: 100px;
+    background: linear-gradient(to top left, #6d7dbd90, #ffffff5a);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, background 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.forecast-card:hover {
+    transform: translateY(-5px);
+    background: rgba(85, 99, 159, 0.85);
+    color: #fff;
+}
+
+/* Forecast text */
+.forecast-card h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.forecast-card p {
+    font-size: 0.9rem;
+    margin: 3px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .forecast-card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .forecast-card {
+        width: 90%;
+    }
+
+    .forecast-container .title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Hourly grid same as daily forecast */
+.hourly-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 90vw;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+    overflow-x: scroll;
+    scrollbar-width: none;/* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+   
+
+}
+
+.hourly-grid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
+
+/* Match hourly card style to daily forecast card */
+.hour-box {
+    width: 100px;
+    background: linear-gradient(to top left, #6d7dbd90, #ffffff5a);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, background 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hour-box:hover {
+    transform: translateY(-5px);
+    background: rgba(85, 99, 159, 0.85);
+    color: #fff;
+}
+
+.hour-time {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.hour-temp {
+    font-size: 0.9rem;
+    margin-top: 3px;
+}
