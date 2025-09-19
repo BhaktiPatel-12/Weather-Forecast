@@ -11,8 +11,8 @@ header("Access-Control-Allow-Headers: Content-Type");
 
 
 $servername = "localhost";
-$username = "root";
-$password = "shrusti@123";
+$username = "";
+$password = "";
 $dbname = "Weather";
 
 // Create connection
@@ -35,4 +35,5 @@ if ($result->num_rows > 0) {
 
 echo json_encode($data);
 $conn->close();
+
 ?>
